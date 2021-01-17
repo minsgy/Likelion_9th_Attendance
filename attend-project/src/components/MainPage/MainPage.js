@@ -3,13 +3,23 @@ import SidePanel from './SidePanel/SidePanel';
 import MainPanel from './MainPanel/MainPanel';
 const MainPage = () => {
     return (
-        <div style={{ display: 'flex', height: '100vh' }}>
+        <div style={{
+            display: 'flex',
+            height: '100vh',
+            fontFamily: 'IBMPlexSansKR-Text'
+        }}>
             {/* 사이트 리스트 */}
-            <div style={{ width: '300px', backgroundColor: '#e4e4e4' }}>
+            <div style={{
+                width: '450px',
+                backgroundColor: '#F2A240',
+                padding: '2rem 1rem'
+            }}>
                 <SidePanel />
             </div>
             {/* 메인 리스트 */}
-            <div style={{ width: '100%' }}>
+            <div style={{
+                width: '100%'
+            }}>
                 <MainPanel />
             </div>
         </div>

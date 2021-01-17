@@ -1,11 +1,8 @@
 import { combineReducers } from 'redux';
-// import user from './user_reducer';
-// import chatRoom from './chatRoom_reducer';
-
+import schedule from './schedule_reducer';
 
 const rootReducer = combineReducers({
-    // user,
-    // chatRoom
+    schedule,
 })
 
 export default rootReducer;

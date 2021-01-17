@@ -5,7 +5,7 @@ import SideList from './SideList';
 
 const SidePanel = () => {
     return (
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
             <SideHeader />
             <SideList />
             <SideFooter />

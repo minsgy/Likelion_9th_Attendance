@@ -11,8 +11,8 @@ const App = () => {
   return (
     <Switch>
       {/* 메인 페이지 연결 */}
-      <Route exact path='/' component={MainPage}></Route>
-      <Route exact path='/auth' component={AuthPage}></Route>
+      <Route exact path='/' component={MainPage} />
+      <Route exact path='/auth' component={AuthPage} />
     </Switch>
   );
 }
