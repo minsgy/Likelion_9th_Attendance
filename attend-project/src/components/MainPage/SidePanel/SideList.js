@@ -34,6 +34,7 @@ const SideList = () => {
 
     const [UserRef, setUserRef] = useState(firebase.database().ref("Users"))
     // const [AttendanceRef, setAttendanceRef] = useState(firebase.database().ref("attendance"))
+
     // 스케줄
     const [ScheduleRef, setScheduleRef] = useState(firebase.database().ref("Schedule"));
 
