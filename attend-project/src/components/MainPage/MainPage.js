@@ -10,7 +10,7 @@ const MainPage = () => {
         }}>
             {/* 사이트 리스트 */}
             <div style={{
-                width: '450px',
+                minWidth: '300px',
                 backgroundColor: '#F2A240',
                 padding: '2rem 1rem'
             }}>
