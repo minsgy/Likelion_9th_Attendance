@@ -7,13 +7,13 @@ import Table from 'react-bootstrap/Table';
 
 const MainList = () => {
 
-    const [UserRef, setUserRef] = useState(firebase.database().ref("Users"));
+    const [UserRef, setUserRef] = useState(firebase.database().ref("Users").orderByChild('Class'));
     const [Users, setUsers] = useState([]);
     const [SearchUser, setSearchUser] = useState([]);
 
     const [AttendanceRef, setAttendanceRef] = useState(firebase.database().ref("Attendance"))
     const [SearchAttendRef, setSearchAttendRef] = useState(firebase.database())
-
+    const [IsLoadingState, setIsLoadingState] = useState(false);
     // Attendance(출석체크 모델의 경우, 단순하게 스케쥴 아이디 값을 저장해서 나타내는 것이 목표.)
     const schedule = useSelector(state => state.schedule.currentSchedule)
 
@@ -40,6 +40,12 @@ const MainList = () => {
             try {
                 // 스케줄 -> 유저이름으로 구분하여, 업데이트
                 await AttendanceRef.child(`${schedule.id}/${user.Username}`).update(newAttendance)
+
+                // 저거 자체 SearchUser 넣을려했더니 무한로딩 되서 하나 로딩만듬
+                if (IsLoadingState)
+                    setIsLoadingState(false)
+                else
+                    setIsLoadingState(true)
             } catch (error) {
                 alert(error)
             }
@@ -75,7 +81,7 @@ const MainList = () => {
                 </td>
                 {SearchUser.map(searchUser => (
                     (searchUser.user_id === user.id && searchUser.schedule_id === schedule.id) &&
-                    <td style={{ color: searchUser.state === "결석" && "red" }}>{searchUser.state}</td>
+                    <td style={{ color: (searchUser.state === "결석" ? "red" : "blue") }}>{searchUser.state}</td>
                 ))}
             </tr >
         ))
@@ -85,7 +91,8 @@ const MainList = () => {
     useEffect(() => {
         addUserListeners();
         SearchState();
-    }, [schedule, SearchUser]) // 이게 있어야 값이 바뀌면서 갱신 된다..^^ 4시간 해맴ㅋㅋ
+    }, [schedule, IsLoadingState])  // schedule 변경시 값 가져오고, state 값 설정 시 실행된다.
+    // 이게 있어야 값이 바뀌면서 갱신 된다..^^
 
     return (
         <div className="MainList">

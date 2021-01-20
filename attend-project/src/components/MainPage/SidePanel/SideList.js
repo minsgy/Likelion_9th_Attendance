@@ -21,7 +21,7 @@ const SideList = () => {
     const [Usershow, setUsershow] = useState(false); // 유저 생성
 
     // 스케줄 들어갈 값
-    const [Datetime, setDatetime] = useState(moment);
+    const [Datetime, setDatetime] = useState("");
     const [Description, setDescription] = useState("");
 
     const [Users, setUsers] = useState([]); // 스케줄에 넣을 학생리스트
@@ -86,6 +86,16 @@ const SideList = () => {
         let UsersArray = [];
         await ScheduleRef.on("child_added", DataSnapshot => {
             SchedulesArray.push(DataSnapshot.val());
+            // 날짜, 월, 년 순으로 완전 정렬
+            SchedulesArray.sort(function (a, b) {
+                return parseInt(a.day) - parseInt(b.day)
+            })
+            SchedulesArray.sort(function (a, b) {
+                return parseInt(a.month) - parseInt(b.month)
+            })
+            SchedulesArray.sort(function (a, b) {
+                return parseInt(a.year) - parseInt(b.year)
+            })
             setSchedule(SchedulesArray);
         })
         UserRef.on("child_added", DataSnapshot => {
@@ -101,9 +111,7 @@ const SideList = () => {
     useEffect(() => {
         AddScheduleListeners();
         // 컴포넌트 제거
-        return (() => {
-            ScheduleRef.off();
-        })
+
     }, [])
 
     // 스케줄 출력하기
@@ -114,24 +122,36 @@ const SideList = () => {
                 key={schedule.id}
                 style={{ backgroundColor: ActiveScheduleId === schedule.id && "#e4e4e4" }}
                 onClick={() => changeSchedule(schedule)}
-            > {schedule.Datetime}{" "}[{schedule.Description}]</ListGroup.Item >
+            >
+                <span style={{
+                    fontSize: '20px',
+                    display: 'block',
+                    margin: 0
+                }}>{schedule.Description}</span>
+
+
+                <span style={{
+                    fontSize: '12px'
+                }}>{schedule.year}-{schedule.month}-{schedule.day}
+                </span></ListGroup.Item >
         ))
 
     // 세션 일정 추가 함수
-    const addSchedule = () => {
+    const addSchedule = async () => {
         const key = ScheduleRef.push().key;
         const newSchedule = {
-            Datetime: Datetime,
+            year: Datetime.substring(0, 4),
+            month: Datetime.substring(5, 7),
+            day: Datetime.substring(8, 10),
             Description: Description,
-            id: key,
-            Users
+            id: key
         }
         try {
-            ScheduleRef.child(key).update(newSchedule)
+            await ScheduleRef.child(key).update(newSchedule)
             setShow(false); // modal 창 닫기
 
             // 세션 일정 입력한 거 다 초기화하기
-            setDatetime(moment);
+            setDatetime("");
             setUsers([]);
             setDescription("");
         } catch (error) {
@@ -197,8 +217,8 @@ const SideList = () => {
                                 <Form.Label>세션 일정</Form.Label>
                                 <br />
                                 <DatePicker onChange={(val) => {
-                                    setDatetime(val.format("MMMM Do, a h시 mm분"))
-                                }} showTime format="MM월 DD일 h시 m분 a" />
+                                    setDatetime(val.format("YYYY-MM-DD"))
+                                }} />
                                 <br />
                             </Form.Group>
                             <Form.Group>
@@ -275,13 +295,13 @@ const SideList = () => {
                             취소
                         </Button>
                         <Button variant="primary" onClick={handleUserSubmit}>
-                            일정 생성하기
+                            멤버 추가하기
                         </Button>
                     </Modal.Footer>
                 </Modal>
 
             </div>
-            <ListGroup>
+            <ListGroup style={{ maxHeight: '600px', overflowY: 'auto' }}>
                 {renderScheduleList(Schedule)}
             </ListGroup>
         </div >

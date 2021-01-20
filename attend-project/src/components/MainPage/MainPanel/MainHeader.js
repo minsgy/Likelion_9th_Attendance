@@ -5,7 +5,7 @@ const MainHeader = () => {
     const schedule = useSelector(state => state.schedule.currentSchedule)
     return (
         <div className="MainHeader">
-            <span style={{ margin: 0, fontSize: '15px' }}>{schedule?.Datetime} </span>
+            <span style={{ margin: 0, fontSize: '15px' }}>{schedule?.year}-{schedule?.month}-{schedule?.day} </span>
             <h2>출석 리스트</h2>
             <h3 style={{ margin: 0, fontSize: '20px' }}>{schedule?.Description}</h3>
         </div>
