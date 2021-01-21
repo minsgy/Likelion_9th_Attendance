@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import firebase from '../../../firebase';
-import Table from 'react-bootstrap/Table';
 
 const AttendList = () => {
     // 데이터베이스 ref
@@ -12,9 +10,6 @@ const AttendList = () => {
     const [Schedule, setSchedule] = useState([]);
     const [User, setUser] = useState([]);
     const [Attendance, setAttendance] = useState([]);
-
-    const [Absent, setAbsent] = useState(0);
-    let count = 0;
 
     const addUserListeners = async () => {
         let UsersArray = [];
@@ -89,7 +84,6 @@ const AttendList = () => {
                                         || attend[user.Username].state === '지각' && "#FFD732"
                                         || attend[user.Username].state === '출석' && "#FFFF8C"
                                     )
-
                                 }}>
                                     {" "}
                                 </li>
@@ -106,23 +100,44 @@ const AttendList = () => {
             <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '70%' }}>
                 <h2>종합 출석 리스트</h2>
                 <div style={{ display: 'flex' }}>
-                    <span style={{ marginRight: '1rem', padding: '0.5rem', color: 'black', backgroundColor: "#FFFF8C", borderRadius: '30px' }}>출석</span>
-                    <span style={{ marginRight: '1rem', padding: '0.5rem', color: 'black', backgroundColor: "#FFD732", borderRadius: '30px' }}>지각</span>
-                    <span style={{ padding: '0.5rem', color: 'black', backgroundColor: "#FF3232", borderRadius: '30px' }}>결석</span>
+                    <span style={{
+                        marginRight: '1rem',
+                        padding: '0.5rem',
+                        color: 'black',
+                        backgroundColor: "#FFFF8C",
+                        borderRadius: '30px'
+                    }}>출석</span>
+                    <span style={{
+                        marginRight: '1rem',
+                        padding: '0.5rem',
+                        color: 'black',
+                        backgroundColor: "#FFD732",
+                        borderRadius: '30px'
+                    }}>지각</span>
+                    <span style={{
+                        padding: '0.5rem',
+                        color: 'black',
+                        backgroundColor: "#FF3232",
+                        borderRadius: '30px'
+                    }}>결석</span>
                 </div>
             </header>
 
-            <div>
+            <div style={{
+                width: '70%',
+                overflow: 'auto'
+            }}>
                 <ul className="Header_Container">
                     <li className="Header_list">이름 / 스케줄</li>
                     {renderScheduleList(Schedule)}
                 </ul>
+
                 <ul className="UserState_Container">
                     {renderUserStateList(User)}
                 </ul>
-
             </div>
 
+            {/* Table로 짰다가 반응형 안되서 갖다버림 */}
             {/* <div style={{ textAlign: 'center', width: '1000px', height: '600px', overflow: 'scroll' }}>
                 <table style={{ width: "100%", height: '80vh', overflow: 'auto' }} hover responsive>
                     <thead>
