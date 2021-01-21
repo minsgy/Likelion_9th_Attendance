@@ -129,7 +129,6 @@ const SideList = () => {
                     margin: 0
                 }}>{schedule.Description}</span>
 
-
                 <span style={{
                     fontSize: '12px'
                 }}>{schedule.year}-{schedule.month}-{schedule.day}

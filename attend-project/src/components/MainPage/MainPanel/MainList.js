@@ -81,7 +81,7 @@ const MainList = () => {
                 </td>
                 {SearchUser.map(searchUser => (
                     (searchUser.user_id === user.id && searchUser.schedule_id === schedule.id) &&
-                    <td style={{ color: (searchUser.state === "결석" ? "red" : "blue") }}>{searchUser.state}</td>
+                    <td style={{ color: (searchUser.state === "결석" && "red" || searchUser.state === "지각" && "orange" || searchUser.state === "출석" && "blue") }}>{searchUser.state}</td>
                 ))}
             </tr >
         ))

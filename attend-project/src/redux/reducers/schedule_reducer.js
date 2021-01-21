@@ -1,4 +1,4 @@
-import { SET_CURRENT_SCHEDULE } from '../actions/types'
+import { CLEAR_SCHEDULE, SET_CURRENT_SCHEDULE } from '../actions/types'
 
 const initialScheduleState = {
     currentSchedule: null,
@@ -11,6 +11,11 @@ export default function (state = initialScheduleState, action) {
             return {
                 ...state,
                 currentSchedule: action.payload,
+            }
+        case CLEAR_SCHEDULE:
+            return {
+                ...state,
+                currentSchedule: null,
             }
         default:
             return state
