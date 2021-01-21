@@ -66,3 +66,43 @@ body {
   color: white;
 
 }
+
+li {
+  display: block;
+}
+
+
+.Header_list,
+.Main_List {
+
+  margin-bottom: 5px;
+  border-bottom: 1px solid #efefef;
+  font-size: 12px;
+
+  width: 100px;
+
+  text-align: center;
+}
+
+.Header_Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.List_Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.UserList {
+  padding: 10px;
+  width: 100px;
+  text-align: center;
+}
+
+.Schedule_List {
+  width: 100px;
+}

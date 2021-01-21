@@ -19,7 +19,7 @@ const SideHeader = () => {
                     fontSize: '27px'
                 }}> 세션리스트</h2>
             </div>
-            <p onClick={HandleAttendListPage}>전체 출석 리스트 보기</p>
+            <span style={{ margin: '0rem auto 1rem', width: '150px', display: 'inline-block', backgroundColor: 'white', padding: '3px', textAlign: 'center', borderRadius: '20px' }} onClick={HandleAttendListPage}>전체 출석 리스트 보기</span>
         </>
     );
 }

@@ -163,3 +163,10 @@ input,
 select {
     vertical-align: middle;
 }
+
+
+/* 목록 */
+ol,
+ul {
+    list-style: none;
+}

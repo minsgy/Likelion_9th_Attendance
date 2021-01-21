@@ -40,7 +40,6 @@ const MainList = () => {
             try {
                 // 스케줄 -> 유저이름으로 구분하여, 업데이트
                 await AttendanceRef.child(`${schedule.id}/${user.Username}`).update(newAttendance)
-
                 // 저거 자체 SearchUser 넣을려했더니 무한로딩 되서 하나 로딩만듬
                 if (IsLoadingState)
                     setIsLoadingState(false)
@@ -95,16 +94,16 @@ const MainList = () => {
     // 이게 있어야 값이 바뀌면서 갱신 된다..^^
 
     return (
-        <div className="MainList">
+        <div className="MainList" style={{ height: '500px', overflow: 'auto' }}>
             <Table hover responsive size="lg">
                 <thead style={{ fontSize: '20px' }}>
                     <tr>
-                        <th>학번</th>
-                        <th>이름</th>
-                        <th>학과</th>
-                        <th>전화 번호</th>
-                        <th>출석 여부</th>
-                        <th>출석 상태</th>
+                        <th >학번</th>
+                        <th >이름</th>
+                        <th >학과</th>
+                        <th >전화 번호</th>
+                        <th >출석 여부</th>
+                        <th >출석 상태</th>
                     </tr>
                 </thead>
                 <tbody style={{ fontSize: '15px' }}>
@@ -112,7 +111,7 @@ const MainList = () => {
                 </tbody>
             </Table>
 
-        </div>
+        </div >
     );
 }
 

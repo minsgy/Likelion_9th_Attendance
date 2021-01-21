@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentSchedule } from '../../../redux/actions/schedule_action'
 
 import firebase from '../../../firebase'
-import 'moment/locale/ko'
-import moment from 'moment'
+
+// import moment from 'moment'
 // design
 import ListGroup from 'react-bootstrap/ListGroup';
 import { FaRegCalendarPlus } from 'react-icons/fa';
@@ -300,7 +300,7 @@ const SideList = () => {
                 </Modal>
 
             </div>
-            <ListGroup style={{ maxHeight: '600px', overflowY: 'auto' }}>
+            <ListGroup style={{ maxHeight: '500px', overflowY: 'auto' }}>
                 {renderScheduleList(Schedule)}
             </ListGroup>
         </div >
