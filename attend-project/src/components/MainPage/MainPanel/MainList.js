@@ -61,6 +61,7 @@ const MainList = () => {
             setSearchUser(searchuser)
         })
     }
+    
     const renderUserList = (Users) =>
 
         Users.length > 0 &&
@@ -70,7 +71,6 @@ const MainList = () => {
                 <td>{user.Username}</td>
                 <td>{user.Department}</td>
                 <td>{user.Callnumber}</td>
-
                 <td>
                     <form>
                         출석<input style={{ marginRight: '1rem' }} type='radio' name={user.id} value='출석' onChange={(e) => (handleAttend(user, schedule, e.target.value))} />
