@@ -11,6 +11,8 @@ const AttendList = () => {
     const [User, setUser] = useState([]);
     const [Attendance, setAttendance] = useState([]);
 
+    const [isReLoadingList, setisReLoadingList] = useState(false);
+
     const addUserListeners = async () => {
         let UsersArray = [];
         await UserRef.on('child_added', DataSnapshot => {
@@ -52,7 +54,7 @@ const AttendList = () => {
         addAttendanceListeners();
         addUserListeners();
 
-    }, []);
+    }, [isReLoadingList]);
 
 
 
@@ -98,6 +100,14 @@ const AttendList = () => {
     return (
         <>
             <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '70%' }}>
+                <div style={{ color: 'white', backgroundColor: 'black', padding: '3px 8px', borderRadius: '30px' }} onClick={() => {
+                    if (isReLoadingList) {
+                        setisReLoadingList(false)
+                    }
+                    else {
+                        setisReLoadingList(true)
+                    }
+                }}>리스트 새로고침 하기</div>
                 <h2>종합 출석 리스트</h2>
                 <div style={{ display: 'flex' }}>
                     <span style={{
@@ -125,6 +135,7 @@ const AttendList = () => {
 
             <div style={{
                 width: '70%',
+                height: '500px',
                 overflow: 'auto'
             }}>
                 <ul className="Header_Container">

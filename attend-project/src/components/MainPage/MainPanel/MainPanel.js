@@ -15,23 +15,22 @@ const MainPanel = () => {
 
     // null일 시, MainHeader 및 MainList 안보이게함.
     const schedule = useSelector(state => state.schedule.currentSchedule)
-
-
-    // const AttendanceList
-
+    // const auth = useSelector(state => state.auth.currentAuth)
     return (
         <main style={{ display: 'flex', flexDirection: 'column' }}>
-            {schedule ?
-                <>
-                    <MainHeader />
-                    <MainList />
-                </>
-                :
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-                    <AttendList />
-                </div>
+            {
+                schedule ?
+                    <>
+                        < MainHeader />
+                        <MainList />
+                    </>
+                    :
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                        <AttendList />
+                    </div>
             }
-        </main>
+
+        </main >
     );
 }
 
