@@ -1,6 +1,9 @@
 # 🦁Likelion_9th_Attendance
 🦁 LIKELION 9th At Soonchunhyang [ToyProject]
 
+## 🔗 해당링크
+- [접속하기](https://minsgy.dev/)
+
 ## 😀프로젝트 내용
 - 멋쟁이사자처럼 9기 운영진 스터디 개인 프로젝트
 - Session 출석부 프로그램 제작하기
