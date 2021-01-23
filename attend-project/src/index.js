@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-
+import "./reset.css"
+// React 부트스트랩/Ant design
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'antd/dist/antd.css';
 import "./index.css";
 
 // 라우터 사용
@@ -14,9 +17,6 @@ import { createStore, applyMiddleware } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import Reducer from './redux/reducers';
 
-// React 부트스트랩/Ant design
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'antd/dist/antd.css';
 
 
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
