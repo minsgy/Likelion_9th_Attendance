@@ -8,6 +8,21 @@
 - 멋쟁이사자처럼 9기 운영진 스터디 개인 프로젝트
 - Session 출석부 프로그램 제작하기
 
+## 체크 리스트
+
+- [x] Schedule 생성 + 실시간 적용 업데이트 완료
+- [x] Schedule 리스트 출력
+- [x] Schedule 리스트 날짜 정렬 구현
+- [x] User 모델 생성 + 실시간 적용 업데이트 완료
+- [x] User 리스트 출력 + 실시간 적용 업데이트 완료
+- [x] 유저 학번 순 정렬 구현
+- [x] User Attendance State 생성 구현 + 실시간 업데이트 완료
+- [x] User Attendance 무한 rendering Fix
+- [x] Modal Page 구현 (스케줄, 유저 생성 Page)
+- [x] AttendPage 구현(리스트, 출석/지각/결석 여부..)
+- [x] Auth 인증 페이지 구현 (운영진 전용 코드 제공)
+- [x]총 출석 현황 리스트 페이지 구현
+- [x]출석현황 페이지 이동 버튼 SidePanel_Header에 추가
 
 ## 🔨개발 과정 및 기간
 - 2021년 01. 15. ~ 22, 약 7일
