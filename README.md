@@ -2,7 +2,7 @@
 🦁 LIKELION 9th At Soonchunhyang [ToyProject]
 
 ## 🔗 해당링크
-- [접속하기](https://minsgy.dev/)
+- [접속하기](https://schlikelion.org/)
 
 ## 😀프로젝트 내용
 - 멋쟁이사자처럼 9기 운영진 스터디 개인 프로젝트
